@@ -1,0 +1,10 @@
+input_csv: "sample_data.csv"
+
+columns:
+  x: "sensor_a"
+  y: "sensor_b"
+
+task:
+  name: "corr_analysis"
+  # 是否打印中间量（mean_x / mean_y / n）
+  verbose: true

@@ -22,7 +22,6 @@ def calc_corr(x, y):
     denom = (n * sum_x2 - sum_x**2) * (n * sum_y2 - sum_y**2)
     if denom <= 0:
         return 0.0
-    # 这里补上 sqrt
     return (n * sum_xy - sum_x * sum_y) / math.sqrt(denom)
 
 def main():

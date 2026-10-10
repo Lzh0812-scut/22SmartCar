@@ -22,6 +22,16 @@ def load_data(file_path):
         rows = list(reader)
     return headers, rows
 
+def extract_columns(rows, idx1=0, idx2=1):
+    """从数据行中提取指定两列并转为浮点数列表。
+    参数: rows - CSV 数据行列表；idx1, idx2 - 列索引（默认 0 和 1）
+    返回: (col1, col2) 两个数值列表
+    异常: IndexError 当索引越界时抛出
+    """
+    col1 = [float(r[idx1]) for r in rows]
+    col2 = [float(r[idx2]) for r in rows]
+    return col1, col2
+
 def calc_corr(x, y):
     """计算皮尔逊相关系数。
     参数: x, y - 等长度数值列表
@@ -43,8 +53,7 @@ def calc_corr(x, y):
 def main():
     """主入口：加载数据、提取两列、计算并输出相关系数"""
     headers, rows = load_data("sample_data.csv")
-    col1 = [float(r[0]) for r in rows]
-    col2 = [float(r[1]) for r in rows]
+    col1, col2 = extract_columns(rows, 0, 1)
     r = calc_corr(col1, col2)
     print(f"相关系数: {r}")
 
